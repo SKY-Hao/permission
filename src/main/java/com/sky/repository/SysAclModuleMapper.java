@@ -1,6 +1,6 @@
 package com.sky.repository;
 
-import com.syk.entity.SysAclModule;
+import com.sky.entity.SysAclModule;
 
 public interface SysAclModuleMapper {
     int deleteByPrimaryKey(Integer id);

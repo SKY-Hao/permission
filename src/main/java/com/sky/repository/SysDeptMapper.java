@@ -1,6 +1,6 @@
 package com.sky.repository;
 
-import com.syk.entity.SysDept;
+import com.sky.entity.SysDept;
 
 public interface SysDeptMapper {
     int deleteByPrimaryKey(Integer id);

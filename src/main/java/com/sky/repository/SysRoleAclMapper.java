@@ -1,6 +1,6 @@
 package com.sky.repository;
 
-import com.syk.entity.SysRoleAcl;
+import com.sky.entity.SysRoleAcl;
 
 public interface SysRoleAclMapper {
     int deleteByPrimaryKey(Integer id);

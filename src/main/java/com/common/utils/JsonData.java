@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2018/8/16.
  */
@@ -38,10 +41,18 @@ public class JsonData {
         return jsonData;
     }
 
-    public static  JsonData success(String msg){
+    public static  JsonData fail(String msg){
         JsonData jsonData = new JsonData(false);
         jsonData.msg=msg;
         return jsonData;
+    }
+
+    public Map<String, Object> toMap(){
+        HashMap<String , Object> result = new HashMap<String, Object>();
+        result.put("ret",ret);
+        result.put("msg",msg);
+        result.put("data",data);
+        return result;
     }
 
 

@@ -1,6 +1,6 @@
 package com.sky.repository;
 
-import com.syk.entity.SysRoleUser;
+import com.sky.entity.SysRoleUser;
 
 public interface SysRoleUserMapper {
     int deleteByPrimaryKey(Integer id);

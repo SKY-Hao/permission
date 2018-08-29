@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.media.jfxmedia.logging.Logger'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

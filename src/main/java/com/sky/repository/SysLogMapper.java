@@ -1,7 +1,8 @@
 package com.sky.repository;
 
-import com.syk.entity.SysLog;
-import com.syk.entity.SysLogWithBLOBs;
+
+import com.sky.entity.SysLog;
+import com.sky.entity.SysLogWithBLOBs;
 
 public interface SysLogMapper {
     int deleteByPrimaryKey(Integer id);

@@ -35,6 +35,10 @@
     <context:component-scan base-package="com.sky.controller"/>
     <context:component-scan base-package="com.sky.service"/>
 
+    <bean class="com.common.utils.ApplicationContextHelper" lazy-init="false"/>
+
+    <bean class="com.common.utils.SpringExceptionResolver"/>
+
     <!--定义接口的时候使用-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
 
