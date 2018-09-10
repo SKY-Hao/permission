@@ -2,7 +2,7 @@
     基于springboot+mybatis进行开发
     基于最流行RBAC拓展模型，构建分布式权限管理系统
     本系统适用于中小企业作为后台管理权限系统
-####本项目所使用的技术
+#### 本项目所使用的技术
     权限框架：Spring Security 、 Apache Shiro
     
     项目框架：Spring Boot、Spring MVC、Mybatis、Redis
@@ -13,7 +13,7 @@
     
     其他技术：Guava、Druid、 Jackson
 
-####项目功能
+#### 项目功能
       Java权限管理系统功能列表
       1
       部门模块
