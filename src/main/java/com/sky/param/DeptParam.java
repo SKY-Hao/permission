@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
+ * 部门DeptParam
  * Created by Administrator on 2018/8/29.
  */
 public class DeptParam {

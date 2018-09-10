@@ -20,7 +20,7 @@ import java.util.Map;
 @Component
 public class HttpInterceptor extends HandlerInterceptorAdapter{
 
-    private Logger logger = Logger.getLogger(getClass());
+    private Logger  logger = Logger.getLogger(getClass());
 
     private static final String START_TIME = "requestStartTime";
 

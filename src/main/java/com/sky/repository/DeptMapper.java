@@ -2,7 +2,13 @@ package com.sky.repository;
 
 import com.sky.entity.SysDept;
 
-public interface SysDeptMapper {
+import java.util.List;
+
+/**
+ * 部门Mapper接口
+ * 2018年8月29日17:09:18
+ */
+public interface DeptMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(SysDept record);
@@ -14,4 +20,6 @@ public interface SysDeptMapper {
     int updateByPrimaryKeySelective(SysDept record);
 
     int updateByPrimaryKey(SysDept record);
+
+    List<SysDept> getAllDept();
 }
