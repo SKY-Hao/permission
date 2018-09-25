@@ -7,10 +7,14 @@ import com.google.common.base.Preconditions;
 import com.sky.entity.SysDept;
 import com.sky.param.DeptParam;
 import com.sky.repository.DeptMapper;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/8/29.
@@ -62,9 +66,42 @@ public class DeptService {
             throw new ParmException("同一层级下存在相同名称的部门");
         }
 
-        SysDept affter =SysDept.builder().name(param.getName()).parentId(param.getParentId())
+        SysDept affter =SysDept.builder().id(param.getId()).parentId(param.getParentId())
                 .seq(param.getSeq()).remark(param.getRemark()).build();
-//TODO 未完成
+        affter.setLevel(LevelUtil.caculateLevel(getLevel(param.getParentId()),param.getParentId()));
+        affter.setOperator("system-update");//TODO
+        affter.setOperatorIp("127.0.0.1");
+        affter.setOperatorTime(new Date());
+
+        updateWithChild(before,affter);
+
+    }
+
+    /**
+     * 部门更新
+     * @param befor
+     * @param after
+     */
+    @Transactional
+    private void  updateWithChild(SysDept befor,SysDept after){
+
+        String newLevelPrefix = after.getLevel();
+        String oldLevelPrefix = befor.getLevel();
+        if (!after.getLevel().equals(befor.getLevel())){
+            //查询当前部门的子部门
+            List<SysDept> deptList = deptMapper.getChildDeptListBylevel(befor.getLevel());
+            if(CollectionUtils.isNotEmpty(deptList)){
+                for (SysDept dept :deptList){
+                    String level = dept.getLevel();
+                    if (level.indexOf(oldLevelPrefix)==0){
+                        level= newLevelPrefix + level.substring(oldLevelPrefix.length());
+                    }
+                }
+                deptMapper.bacthUpdateLevel(deptList);
+            }
+        }
+        deptMapper.updateByPrimaryKey(after);
+
     }
 
 
@@ -72,7 +109,7 @@ public class DeptService {
     private  boolean checkExist(Integer parentId,String deptName,Integer deptId){
 
         //TODO
-        return true;
+        return deptMapper.countByNameParentId(parentId,deptName,deptId)>0;
     }
 
     private String getLevel(Integer deptId){
